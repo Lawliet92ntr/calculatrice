@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculatrice Bleu Ciel</title>
+    <style>
+body {
+  background-color: #87CEEB;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  width: 300px;
+  margin: 50px auto;
+  background-color: white;
+  bord
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+button {
+  width: 70px;
+  height: 50px;
+  font-size: 24px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <table>
+        <tr>
+          <td colspan="4"><input type="text" id="result" readonly></td>
+        </tr>
+        <tr>
+          <td><button onclick="addDigit('7')">7</button></td>
+          <td><button onclick="addDigit('8')">8</button></td>
+          <td><button onclick="addDigit('9')">9</button></td>
+          <td><button onclick="operator('+')">+</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addDigit('4')">4</button></td>
+          <td><button onclick="addDigit('5')">5</button></td>
+          <td><button onclick="addDigit('6')">6</button></td>
+          <td><button onclick="operator('-')">-</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addDigit('1')">1</button></td>
+          <td><button onclick="addDigit('2')">2</button></td>
+          <td><button onclick="addDigit('3')">3</button></td>
+          <td><button onclick="operator('*')">*</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="addDigit('0')">0</button></td>
+          <td><button onclick="addDecimal()">.</button></td>
+          <td><button onclick="clearInput()">C</button></td>
+          <td><button onclick="operator('/')">/</button></td>
+        </tr>
+        <tr>
+          <td colspan="4"><button onclick="calculate()">=</button></td>
+        </tr>
+      </table>
+    </div>
+    
+    <script>
+      function addDigit(digit) {
+        document.getElementById("result").value += digit;
+      }
+      
+      function addDecimal() {
+        if (!document.getElementById("result").value.includes(".")) {
+          document.getElementById("result").value += ".";
+        }
+      }
+      
+      function clearInput() {
+        document.getElementById("result").value = "";
+      }
+      
+      function operator(op) {
+        if (document.getElementById("result").value !== "") {
+          document.getElementById("result").value += " " + op + " ";
+        }
+      }
+      
+      function calculate() {
+        let result = eval(document.getElementById("result").value);
+        document.getElementById("result").value = result;
+      }
+    </script>
+  </body>
+</html>
